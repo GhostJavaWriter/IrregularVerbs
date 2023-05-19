@@ -9,15 +9,30 @@ import UIKit
 
 final class ViewController: UIViewController {
 
+    private let defaultDeck = [
+        FlashCardModel(word: "Write",
+                       answer: "Write\nWrote\nWritten",
+                       cardColor: .systemBlue),
+        FlashCardModel(word: "Cost",
+                       answer: "Cost\nCost\nCost",
+                       cardColor: .systemPink)
+    ]
+    
+    private var currentCardIndex = 0
+    
+    private var customView: CustomView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
-        let customView = CustomView()
+        currentCardIndex = Int.random(in: 0..<defaultDeck.count)
+        let initialCard = defaultDeck[currentCardIndex]
+        customView = CustomView(with: initialCard)
+        customView?.rightButtonAction = { [weak self] in self?.showNextCard() }
         
-        let model = FlashCardModel(word: "Write")
-        customView.configureView(with: model)
+        guard let customView = customView else { return }
         
         view.addSubview(customView)
         
@@ -29,6 +44,12 @@ final class ViewController: UIViewController {
             customView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             customView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
+    }
+    
+    func showNextCard() {
+        currentCardIndex = (currentCardIndex + 1) % defaultDeck.count
+        let nextCard = defaultDeck[currentCardIndex]
+        customView?.configureView(with: nextCard)
     }
 
 }

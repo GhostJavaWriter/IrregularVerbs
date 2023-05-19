@@ -14,6 +14,9 @@ final class CustomView: UIView {
     private lazy var wordLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        label.textColor = .white
         label.numberOfLines = 0
         return label
     }()
@@ -21,18 +24,11 @@ final class CustomView: UIView {
     private lazy var flashCardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 20
         view.backgroundColor = .systemYellow
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(flashCardTapped))
         view.addGestureRecognizer(tapGestureRecognizer)
         view.addSubview(wordLabel)
-        return view
-    }()
-    
-    private lazy var estimateButtonsView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemOrange
-        
         return view
     }()
     
@@ -55,6 +51,7 @@ final class CustomView: UIView {
         config.baseForegroundColor = .white
         button.setTitle("Right", for: .normal)
         button.configuration = config
+        button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -64,23 +61,27 @@ final class CustomView: UIView {
         stack.spacing = UIStackView.spacingUseSystem
         stack.distribution = .fill
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.backgroundColor = .systemOrange
         stack.isHidden = true
         return stack
     }()
     
+    // MARK: - Properties
+    
+    private var areButtonsHidden = true
+    var cardModel: FlashCardModel
+    var rightButtonAction: (() -> Void)?
+    
     // MARK: - Init
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    init(with model: FlashCardModel) {
+        self.cardModel = model
+        super.init(frame: .zero)
+        configureView(with: model)
         setupView()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setupView()
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Public methods
@@ -104,7 +105,7 @@ final class CustomView: UIView {
             
             flashCardView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             flashCardView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            flashCardView.heightAnchor.constraint(equalTo: margins.heightAnchor, multiplier: 1/5),
+            flashCardView.heightAnchor.constraint(equalTo: margins.heightAnchor, multiplier: 1/4),
             flashCardView.centerYAnchor.constraint(equalTo: margins.centerYAnchor),
             
             wordLabel.centerXAnchor.constraint(equalTo: flashCardView.centerXAnchor),
@@ -118,13 +119,16 @@ final class CustomView: UIView {
     
     @objc private func flashCardTapped() {
         
-        let backSideModel = FlashCardModel(word: "Write\nWrote\nWritten")
-        
         UIView.transition(with: flashCardView, duration: 0.3, options: .transitionFlipFromTop, animations: {
-            self.wordLabel.text = backSideModel.word
-            self.flashCardView.backgroundColor = .systemBlue
+            self.wordLabel.text = self.cardModel.answer
+            self.flashCardView.backgroundColor = self.cardModel.cardColor
             self.stackView.isHidden = false
         }, completion: nil)
+    }
+    
+    @objc private func rightButtonTapped() {
+        
+        rightButtonAction?()
     }
     
 }
