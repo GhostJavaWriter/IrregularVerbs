@@ -14,7 +14,7 @@ final class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        let customView = FlashCardView()
+        let customView = CustomView()
         
         let model = FlashCardModel(word: "Write")
         customView.configureView(with: model)
