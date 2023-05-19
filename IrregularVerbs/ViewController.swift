@@ -7,12 +7,28 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .cyan
+        view.backgroundColor = .white
+        
+        let customView = FlashCardView()
+        
+        let model = FlashCardModel(word: "Write")
+        customView.configureView(with: model)
+        
+        view.addSubview(customView)
+        
+        let guide = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            customView.topAnchor.constraint(equalTo: guide.topAnchor),
+            customView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            customView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            customView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+        ])
     }
 
 }

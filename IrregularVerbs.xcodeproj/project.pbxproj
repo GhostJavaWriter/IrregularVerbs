@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DE2395E92A17EE230056ED7A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DE2395E82A17EE230056ED7A /* .gitignore */; };
+		DE2395EB2A17F58F0056ED7A /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2395EA2A17F58F0056ED7A /* FlashCardView.swift */; };
+		DE2395ED2A17F6AA0056ED7A /* FlashCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2395EC2A17F6AA0056ED7A /* FlashCardModel.swift */; };
 		DEC888042A17E4D700256D97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC888032A17E4D700256D97 /* AppDelegate.swift */; };
 		DEC888082A17E4D700256D97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC888072A17E4D700256D97 /* ViewController.swift */; };
 		DEC8880D2A17E4D900256D97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC8880C2A17E4D900256D97 /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 
 /* Begin PBXFileReference section */
 		DE2395E82A17EE230056ED7A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		DE2395EA2A17F58F0056ED7A /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
+		DE2395EC2A17F6AA0056ED7A /* FlashCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardModel.swift; sourceTree = "<group>"; };
 		DEC888002A17E4D700256D97 /* IrregularVerbs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IrregularVerbs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC888032A17E4D700256D97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEC888072A17E4D700256D97 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 				DEC888172A17E80C00256D97 /* Base */,
 				DEC888032A17E4D700256D97 /* AppDelegate.swift */,
 				DEC888072A17E4D700256D97 /* ViewController.swift */,
+				DE2395EA2A17F58F0056ED7A /* FlashCardView.swift */,
+				DE2395EC2A17F6AA0056ED7A /* FlashCardModel.swift */,
 			);
 			path = IrregularVerbs;
 			sourceTree = "<group>";
@@ -143,6 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2395ED2A17F6AA0056ED7A /* FlashCardModel.swift in Sources */,
+				DE2395EB2A17F58F0056ED7A /* FlashCardView.swift in Sources */,
 				DEC888082A17E4D700256D97 /* ViewController.swift in Sources */,
 				DEC888042A17E4D700256D97 /* AppDelegate.swift in Sources */,
 			);
