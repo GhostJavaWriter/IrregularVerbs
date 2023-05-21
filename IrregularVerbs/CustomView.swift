@@ -68,7 +68,7 @@ final class CustomView: UIView {
     // MARK: - Properties
     
     private var areButtonsHidden = true
-    var cardModel: FlashCardModel
+    private var cardModel: FlashCardModel
     var rightButtonAction: (() -> Void)?
     
     // MARK: - Init
@@ -87,7 +87,10 @@ final class CustomView: UIView {
     // MARK: - Public methods
     
     func configureView(with model: FlashCardModel) {
+        cardModel = model
         wordLabel.text = model.word
+        flashCardView.backgroundColor = model.cardColor
+        stackView.isHidden = true
     }
     
     // MARK: - Private methods
