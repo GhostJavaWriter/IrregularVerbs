@@ -7,9 +7,10 @@
 
 import UIKit
 
-struct FlashCardModel {
+struct FlashCardModel: Codable {
     
-    let word: String
-    let answer: String
-    let cardColor: UIColor
+    let baseForm: String
+    let pastTense: String
+    let pastParticiple: String
+    let group: Int
 }

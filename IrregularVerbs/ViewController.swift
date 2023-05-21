@@ -9,13 +9,7 @@ import UIKit
 
 final class ViewController: UIViewController {
 
-    private let defaultDeck = [
-        FlashCardModel(word: "Write",
-                       answer: "Write\nWrote\nWritten",
-                       cardColor: .systemBlue),
-        FlashCardModel(word: "Cost",
-                       answer: "Cost\nCost\nCost",
-                       cardColor: .systemPink)
+    private var defaultDeck = [FlashCardModel(baseForm: "go", pastTense: "went", pastParticiple: "gone", group: 3)
     ]
     
     private var currentCardIndex = 0
@@ -44,6 +38,20 @@ final class ViewController: UIViewController {
             customView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             customView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
+        
+        loadDeck()
+    }
+    
+    private func loadDeck() {
+        if let url = Bundle.main.url(forResource: "verbs", withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                self.defaultDeck = try decoder.decode([FlashCardModel].self, from: data)
+            } catch {
+                print("Error loading or parsing verbs.json: \(error)")
+            }
+        }
     }
     
     func showNextCard() {

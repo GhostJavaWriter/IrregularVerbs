@@ -88,8 +88,13 @@ final class CustomView: UIView {
     
     func configureView(with model: FlashCardModel) {
         cardModel = model
-        wordLabel.text = model.word
-        flashCardView.backgroundColor = model.cardColor
+        wordLabel.text = model.baseForm
+        switch cardModel.group {
+        case 1: flashCardView.backgroundColor = .systemGreen
+        case 2: flashCardView.backgroundColor = .systemYellow
+        case 3: flashCardView.backgroundColor = .systemRed
+        default: flashCardView.backgroundColor = .white
+        }
         stackView.isHidden = true
     }
     
@@ -123,8 +128,7 @@ final class CustomView: UIView {
     @objc private func flashCardTapped() {
         
         UIView.transition(with: flashCardView, duration: 0.3, options: .transitionFlipFromTop, animations: {
-            self.wordLabel.text = self.cardModel.answer
-            self.flashCardView.backgroundColor = self.cardModel.cardColor
+            self.wordLabel.text = String("Base: \(self.cardModel.baseForm)\nPast: \(self.cardModel.pastTense)\nParticiple: \(self.cardModel.pastParticiple)")
             self.stackView.isHidden = false
         }, completion: nil)
     }

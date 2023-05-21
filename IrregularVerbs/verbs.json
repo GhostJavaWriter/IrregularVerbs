@@ -1,0 +1,75 @@
+[
+    {
+        "baseForm": "cost",
+        "pastTense": "cost",
+        "pastParticiple": "cost",
+        "group": 1
+    },
+    {
+        "baseForm": "cut",
+        "pastTense": "cut",
+        "pastParticiple": "cut",
+        "group": 1
+    },
+    {
+        "baseForm": "hit",
+        "pastTense": "hit",
+        "pastParticiple": "hit",
+        "group": 1
+    },
+    {
+        "baseForm": "hurt",
+        "pastTense": "hurt",
+        "pastParticiple": "hurt",
+        "group": 1
+    },
+    {
+        "baseForm": "let",
+        "pastTense": "let",
+        "pastParticiple": "let",
+        "group": 1
+    },
+    {
+        "baseForm": "put",
+        "pastTense": "put",
+        "pastParticiple": "put",
+        "group": 1
+    },
+    {
+        "baseForm": "set",
+        "pastTense": "set",
+        "pastParticiple": "set",
+        "group": 1
+    },
+    {
+        "baseForm": "shut",
+        "pastTense": "shut",
+        "pastParticiple": "shut",
+        "group": 1
+    },
+    {
+        "baseForm": "split",
+        "pastTense": "split",
+        "pastParticiple": "split",
+        "group": 1
+    },
+    {
+        "baseForm": "bring",
+        "pastTense": "brought",
+        "pastParticiple": "brought",
+        "group": 2
+    },
+    {
+        "baseForm": "go",
+        "pastTense": "went",
+        "pastParticiple": "gone",
+        "group": 3
+    },
+    {
+        "baseForm": "be",
+        "pastTense": "was/were",
+        "pastParticiple": "been",
+        "group": 3
+    },
+]
+
