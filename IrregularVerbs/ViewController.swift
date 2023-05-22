@@ -24,7 +24,7 @@ final class ViewController: UIViewController {
         currentCardIndex = Int.random(in: 0..<defaultDeck.count)
         let initialCard = defaultDeck[currentCardIndex]
         customView = CustomView(with: initialCard)
-        customView?.rightButtonAction = { [weak self] in self?.showNextCard() }
+        customView?.showNextCard = { [weak self] in self?.showNextCard() }
         
         guard let customView = customView else { return }
         
@@ -59,6 +59,6 @@ final class ViewController: UIViewController {
         let nextCard = defaultDeck[currentCardIndex]
         customView?.configureView(with: nextCard)
     }
-
+    
 }
 

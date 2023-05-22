@@ -32,44 +32,27 @@ final class CustomView: UIView {
         return view
     }()
     
-    private lazy var wrongButton: UIButton = {
-        let button = UIButton()
-        var config = UIButton.Configuration.plain()
-        config.background.backgroundColor = .systemRed
-        config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
-        config.baseForegroundColor = .white
-        button.setTitle("Wrong", for: .normal)
-        button.configuration = config
-        return button
+    private lazy var swipeGestureRecognizer: UISwipeGestureRecognizer = {
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(flashCardViewSwiped))
+        swipeGesture.direction = UISwipeGestureRecognizer.Direction.left
+        return swipeGesture
     }()
     
-    private lazy var rightButton: UIButton = {
-        let button = UIButton()
-        var config = UIButton.Configuration.plain()
-        config.background.backgroundColor = .systemGreen
-        config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
-        config.baseForegroundColor = .white
-        button.setTitle("Right", for: .normal)
-        button.configuration = config
-        button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [wrongButton, rightButton])
-        stack.alignment = .fill
-        stack.spacing = UIStackView.spacingUseSystem
-        stack.distribution = .fill
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.isHidden = true
-        return stack
-    }()
+//    private lazy var wrongButton: UIButton = {
+//        let button = UIButton()
+//        var config = UIButton.Configuration.plain()
+//        config.background.backgroundColor = .systemRed
+//        config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
+//        config.baseForegroundColor = .white
+//        button.setTitle("Wrong", for: .normal)
+//        button.configuration = config
+//        return button
+//    }()
     
     // MARK: - Properties
     
-    private var areButtonsHidden = true
     private var cardModel: FlashCardModel
-    var rightButtonAction: (() -> Void)?
+    var showNextCard: (() -> Void)?
     
     // MARK: - Init
     
@@ -95,7 +78,6 @@ final class CustomView: UIView {
         case 3: flashCardView.backgroundColor = .systemRed
         default: flashCardView.backgroundColor = .white
         }
-        stackView.isHidden = true
     }
     
     // MARK: - Private methods
@@ -105,7 +87,6 @@ final class CustomView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(flashCardView)
-        addSubview(stackView)
         
         let margins = layoutMarginsGuide
         
@@ -118,10 +99,6 @@ final class CustomView: UIView {
             
             wordLabel.centerXAnchor.constraint(equalTo: flashCardView.centerXAnchor),
             wordLabel.centerYAnchor.constraint(equalTo: flashCardView.centerYAnchor),
-            
-            stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ])
     }
     
@@ -129,13 +106,29 @@ final class CustomView: UIView {
         
         UIView.transition(with: flashCardView, duration: 0.3, options: .transitionFlipFromTop, animations: {
             self.wordLabel.text = String("Base: \(self.cardModel.baseForm)\nPast: \(self.cardModel.pastTense)\nParticiple: \(self.cardModel.pastParticiple)")
-            self.stackView.isHidden = false
-        }, completion: nil)
+        }, completion: {_ in
+            self.flashCardView.addGestureRecognizer(self.swipeGestureRecognizer)
+        })
     }
     
-    @objc private func rightButtonTapped() {
-        
-        rightButtonAction?()
+    @objc private func flashCardViewSwiped() {
+        animateSwipeLeft()
+        flashCardView.removeGestureRecognizer(swipeGestureRecognizer)
+    }
+    
+    private func animateSwipeLeft() {
+        let animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeIn) {
+            self.flashCardView.transform = CGAffineTransform(translationX: -self.frame.size.width, y: 0)
+            self.flashCardView.alpha = 0
+        }
+        animator.addCompletion { position in
+            if position == .end {
+                self.flashCardView.transform = .identity
+                self.flashCardView.alpha = 1
+                self.showNextCard?()
+            }
+        }
+        animator.startAnimation()
     }
     
 }
