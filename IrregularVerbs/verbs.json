@@ -60,6 +60,318 @@
         "group": 2
     },
     {
+        "baseForm": "buy",
+        "pastTense": "bought",
+        "pastParticiple": "bought",
+        "group": 2
+    },
+    {
+        "baseForm": "catch",
+        "pastTense": "caught",
+        "pastParticiple": "caught",
+        "group": 2
+    },
+    {
+        "baseForm": "fight",
+        "pastTense": "fought",
+        "pastParticiple": "fought",
+        "group": 2
+    },
+    {
+        "baseForm": "teach",
+        "pastTense": "taught",
+        "pastParticiple": "taught",
+        "group": 2
+    },
+        {
+        "baseForm": "think",
+        "pastTense": "thought",
+        "pastParticiple": "thought",
+        "group": 2
+    },
+        {
+        "baseForm": "bend",
+        "pastTense": "bent",
+        "pastParticiple": "bent",
+        "group": 2
+    },
+        {
+        "baseForm": "build",
+        "pastTense": "built",
+        "pastParticiple": "built",
+        "group": 2
+    },
+        {
+        "baseForm": "feel",
+        "pastTense": "felt",
+        "pastParticiple": "felt",
+        "group": 2
+    },
+        {
+        "baseForm": "get",
+        "pastTense": "got",
+        "pastParticiple": "got",
+        "group": 2
+    },
+        {
+        "baseForm": "keep",
+        "pastTense": "kept",
+        "pastParticiple": "kept",
+        "group": 2
+    },
+        {
+        "baseForm": "leave",
+        "pastTense": "left",
+        "pastParticiple": "left",
+        "group": 2
+    },
+        {
+        "baseForm": "light",
+        "pastTense": "lit",
+        "pastParticiple": "lit",
+        "group": 2
+    },
+        {
+        "baseForm": "lend",
+        "pastTense": "lent",
+        "pastParticiple": "lent",
+        "group": 2
+    },
+    {
+        "baseForm": "lose",
+        "pastTense": "lost",
+        "pastParticiple": "lost",
+        "group": 2
+    },
+        {
+        "baseForm": "mean",
+        "pastTense": "meant",
+        "pastParticiple": "meant",
+        "group": 2
+    },
+        {
+        "baseForm": "meet",
+        "pastTense": "met",
+        "pastParticiple": "met",
+        "group": 2
+    },
+        {
+        "baseForm": "send",
+        "pastTense": "sent",
+        "pastParticiple": "sent",
+        "group": 2
+    },
+        {
+        "baseForm": "sleep",
+        "pastTense": "slept",
+        "pastParticiple": "slept",
+        "group": 2
+    },
+        {
+        "baseForm": "spend",
+        "pastTense": "spent",
+        "pastParticiple": "spent",
+        "group": 2
+    },
+        {
+        "baseForm": "shoot",
+        "pastTense": "shot",
+        "pastParticiple": "shot",
+        "group": 2
+    },
+        {
+        "baseForm": "spoil",
+        "pastTense": "spoilt",
+        "pastParticiple": "spoilt",
+        "group": 2
+    },
+        {
+        "baseForm": "sit",
+        "pastTense": "sat",
+        "pastParticiple": "sat",
+        "group": 2
+    },
+        {
+        "baseForm": "feed",
+        "pastTense": "fed",
+        "pastParticiple": "fed",
+        "group": 2
+    },
+        {
+        "baseForm": "find",
+        "pastTense": "found",
+        "pastParticiple": "found",
+        "group": 2
+    },
+        {
+        "baseForm": "have",
+        "pastTense": "had",
+        "pastParticiple": "had",
+        "group": 2
+    },
+        {
+        "baseForm": "hear",
+        "pastTense": "heard",
+        "pastParticiple": "heard",
+        "group": 2
+    },
+        {
+        "baseForm": "hold",
+        "pastTense": "held",
+        "pastParticiple": "held",
+        "group": 2
+    },
+        {
+        "baseForm": "make",
+        "pastTense": "made",
+        "pastParticiple": "made",
+        "group": 2
+    },
+        {
+        "baseForm": "pay",
+        "pastTense": "paid",
+        "pastParticiple": "paid",
+        "group": 2
+    },
+        {
+        "baseForm": "say",
+        "pastTense": "said",
+        "pastParticiple": "said",
+        "group": 2
+    },
+        {
+        "baseForm": "read",
+        "pastTense": "read /réd/",
+        "pastParticiple": "read /réd/",
+        "group": 2
+    },
+    {
+        "baseForm": "sell",
+        "pastTense": "sold",
+        "pastParticiple": "sold",
+        "group": 2
+    },
+    {
+        "baseForm": "tell",
+        "pastTense": "told",
+        "pastParticiple": "told",
+        "group": 2
+    },
+    {
+        "baseForm": "stand",
+        "pastTense": "stood",
+        "pastParticiple": "stood",
+        "group": 2
+    },
+        {
+        "baseForm": "understand",
+        "pastTense": "understood",
+        "pastParticiple": "understood",
+        "group": 2
+    },
+        {
+        "baseForm": "stick",
+        "pastTense": "stuck",
+        "pastParticiple": "stuck",
+        "group": 2
+    },
+        {
+        "baseForm": "shine",
+        "pastTense": "shone",
+        "pastParticiple": "shone",
+        "group": 2
+    },
+        {
+        "baseForm": "win",
+        "pastTense": "won",
+        "pastParticiple": "won",
+        "group": 2
+    },
+        {
+        "baseForm": "begin",
+        "pastTense": "begun",
+        "pastParticiple": "began",
+        "group": 3
+    },
+        {
+        "baseForm": "drink",
+        "pastTense": "drank",
+        "pastParticiple": "drunk",
+        "group": 3
+    },
+        {
+        "baseForm": "ring",
+        "pastTense": "rang",
+        "pastParticiple": "rung",
+        "group": 3
+    },
+        {
+        "baseForm": "sing",
+        "pastTense": "sang",
+        "pastParticiple": "sung",
+        "group": 3
+    },
+        {
+        "baseForm": "shrink",
+        "pastTense": "shrank",
+        "pastParticiple": "shrunk",
+        "group": 3
+    },
+        {
+        "baseForm": "swim",
+        "pastTense": "swam",
+        "pastParticiple": "swum",
+        "group": 3
+    },
+        {
+        "baseForm": "blow",
+        "pastTense": "blew",
+        "pastParticiple": "blown",
+        "group": 3
+    },
+        {
+        "baseForm": "drow",
+        "pastTense": "drew",
+        "pastParticiple": "drown",
+        "group": 3
+    },
+        {
+        "baseForm": "fly",
+        "pastTense": "flew",
+        "pastParticiple": "flown",
+        "group": 3
+    },
+        {
+        "baseForm": "grow",
+        "pastTense": "grew",
+        "pastParticiple": "grown",
+        "group": 3
+    },
+        {
+        "baseForm": "know",
+        "pastTense": "knew",
+        "pastParticiple": "known",
+        "group": 3
+    },
+        {
+        "baseForm": "trow",
+        "pastTense": "trew",
+        "pastParticiple": "trown",
+        "group": 3
+    },
+        {
+        "baseForm": "show",
+        "pastTense": "showed",
+        "pastParticiple": "shown",
+        "group": 3
+    },
+        {
+        "baseForm": "see",
+        "pastTense": "saw",
+        "pastParticiple": "seen",
+        "group": 3
+    },
+    {
         "baseForm": "go",
         "pastTense": "went",
         "pastParticiple": "gone",
@@ -69,6 +381,162 @@
         "baseForm": "be",
         "pastTense": "was/were",
         "pastParticiple": "been",
+        "group": 3
+    },
+        {
+        "baseForm": "do",
+        "pastTense": "did",
+        "pastParticiple": "done",
+        "group": 3
+    },
+        {
+        "baseForm": "come",
+        "pastTense": "came",
+        "pastParticiple": "come",
+        "group": 3
+    },
+        {
+        "baseForm": "run",
+        "pastTense": "ran",
+        "pastParticiple": "run",
+        "group": 3
+    },
+        {
+        "baseForm": "become",
+        "pastTense": "became",
+        "pastParticiple": "become",
+        "group": 3
+    },
+        {
+        "baseForm": "freeze",
+        "pastTense": "froze",
+        "pastParticiple": "frozen",
+        "group": 3
+    },
+        {
+        "baseForm": "speak",
+        "pastTense": "spoke",
+        "pastParticiple": "spoken",
+        "group": 3
+    },
+        {
+        "baseForm": "steal",
+        "pastTense": "stole",
+        "pastParticiple": "stolen",
+        "group": 3
+    },
+        {
+        "baseForm": "break",
+        "pastTense": "broke",
+        "pastParticiple": "broken",
+        "group": 3
+    },
+        {
+        "baseForm": "wake",
+        "pastTense": "woke",
+        "pastParticiple": "woken",
+        "group": 3
+    },
+        {
+        "baseForm": "choose",
+        "pastTense": "chose",
+        "pastParticiple": "chosen",
+        "group": 3
+    },
+        {
+        "baseForm": "drive",
+        "pastTense": "drove",
+        "pastParticiple": "driven",
+        "group": 3
+    },
+        {
+        "baseForm": "write",
+        "pastTense": "wrote",
+        "pastParticiple": "written",
+        "group": 3
+    },
+        {
+        "baseForm": "ride",
+        "pastTense": "rode",
+        "pastParticiple": "ridden",
+        "group": 3
+    },
+        {
+        "baseForm": "hide",
+        "pastTense": "hid",
+        "pastParticiple": "hidden",
+        "group": 3
+    },
+        {
+        "baseForm": "bite",
+        "pastTense": "bit",
+        "pastParticiple": "bitten",
+        "group": 3
+    },
+        {
+        "baseForm": "beat",
+        "pastTense": "beat",
+        "pastParticiple": "beaten",
+        "group": 3
+    },
+        {
+        "baseForm": "eat",
+        "pastTense": "ate",
+        "pastParticiple": "eaten",
+        "group": 3
+    },
+        {
+        "baseForm": "fall",
+        "pastTense": "fell",
+        "pastParticiple": "fallen",
+        "group": 3
+    },
+        {
+        "baseForm": "forget",
+        "pastTense": "forgot",
+        "pastParticiple": "forgotten",
+        "group": 3
+    },
+        {
+        "baseForm": "forbid",
+        "pastTense": "forbade",
+        "pastParticiple": "forbidden",
+        "group": 3
+    },
+        {
+        "baseForm": "forgive",
+        "pastTense": "forgave",
+        "pastParticiple": "forgiven",
+        "group": 3
+    },
+        {
+        "baseForm": "give",
+        "pastTense": "gave",
+        "pastParticiple": "given",
+        "group": 3
+    },
+        {
+        "baseForm": "shake",
+        "pastTense": "shook",
+        "pastParticiple": "shaken",
+        "group": 3
+    },
+        {
+        "baseForm": "take",
+        "pastTense": "took",
+        "pastParticiple": "taken",
+        "group": 3
+    },
+        {
+        "baseForm": "tear",
+        "pastTense": "tore",
+        "pastParticiple": "torn",
+        "group": 3
+    },
+        {
+        "baseForm": "wear",
+        "pastTense": "wore",
+        "pastParticiple": "worn",
         "group": 3
     },
 ]
