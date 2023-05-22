@@ -53,6 +53,7 @@ final class CustomView: UIView {
     
     private var cardModel: FlashCardModel
     var showNextCard: (() -> Void)?
+    private var isFrontSideShown = true
     
     // MARK: - Init
     
@@ -94,7 +95,7 @@ final class CustomView: UIView {
             
             flashCardView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             flashCardView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            flashCardView.heightAnchor.constraint(equalTo: margins.heightAnchor, multiplier: 1/4),
+            flashCardView.heightAnchor.constraint(equalTo: margins.heightAnchor, multiplier: 1/3),
             flashCardView.centerYAnchor.constraint(equalTo: margins.centerYAnchor),
             
             wordLabel.centerXAnchor.constraint(equalTo: flashCardView.centerXAnchor),
@@ -104,10 +105,29 @@ final class CustomView: UIView {
     
     @objc private func flashCardTapped() {
         
+        if isFrontSideShown {
+            showBackSide()
+        } else {
+            showFrontSide()
+        }
+    }
+    
+    private func showFrontSide() {
+        
+        UIView.transition(with: flashCardView, duration: 0.3, options: .transitionFlipFromTop, animations: {
+            self.wordLabel.text = String("\(self.cardModel.baseForm)")
+        }, completion: {_ in
+            self.isFrontSideShown = true
+        })
+    }
+    
+    private func showBackSide() {
+        
         UIView.transition(with: flashCardView, duration: 0.3, options: .transitionFlipFromTop, animations: {
             self.wordLabel.text = String("Base: \(self.cardModel.baseForm)\nPast: \(self.cardModel.pastTense)\nParticiple: \(self.cardModel.pastParticiple)")
         }, completion: {_ in
             self.flashCardView.addGestureRecognizer(self.swipeGestureRecognizer)
+            self.isFrontSideShown = false
         })
     }
     
