@@ -73,6 +73,7 @@ final class CustomView: UIView {
     func configureView(with model: FlashCardModel) {
         cardModel = model
         wordLabel.text = model.baseForm
+        isFrontSideShown = true
         switch cardModel.group {
         case 1: flashCardView.backgroundColor = .systemGreen
         case 2: flashCardView.backgroundColor = .systemYellow
