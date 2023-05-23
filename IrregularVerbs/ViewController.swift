@@ -20,7 +20,10 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
         loadDeck()
+        defaultDeck.shuffle()
+        
         currentCardIndex = Int.random(in: 0..<defaultDeck.count)
         let initialCard = defaultDeck[currentCardIndex]
         customView = CustomView(with: initialCard)
