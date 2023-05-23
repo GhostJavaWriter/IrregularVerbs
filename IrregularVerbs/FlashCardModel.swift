@@ -13,4 +13,5 @@ struct FlashCardModel: Codable {
     let pastTense: String
     let pastParticiple: String
     let group: Int
+    var isLearned: Bool?
 }

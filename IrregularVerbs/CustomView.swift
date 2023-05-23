@@ -26,8 +26,10 @@ final class CustomView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 20
         view.backgroundColor = .systemYellow
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(flashCardTapped))
         view.addGestureRecognizer(tapGestureRecognizer)
+        
         view.addSubview(wordLabel)
         return view
     }()
@@ -38,10 +40,17 @@ final class CustomView: UIView {
         return swipeGesture
     }()
     
+    private lazy var swipeToUpGestureRecognizer: UISwipeGestureRecognizer = {
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(flashCardViewSwipedToUp))
+        swipeGesture.direction = UISwipeGestureRecognizer.Direction.up
+        return swipeGesture
+    }()
+    
     // MARK: - Properties
     
     private var cardModel: FlashCardModel
     var showNextCard: (() -> Void)?
+    var updateCardState: ((FlashCardModel) -> Void)?
     private var isFrontSideShown = true
     
     // MARK: - Init
@@ -117,12 +126,32 @@ final class CustomView: UIView {
             self.wordLabel.text = String("Base: \(self.cardModel.baseForm)\nPast: \(self.cardModel.pastTense)\nParticiple: \(self.cardModel.pastParticiple)")
         }, completion: {_ in
             self.flashCardView.addGestureRecognizer(self.swipeGestureRecognizer)
+            self.flashCardView.addGestureRecognizer(self.swipeToUpGestureRecognizer)
             self.isFrontSideShown = false
         })
     }
     
     @objc private func flashCardViewSwiped() {
         animateSwipeLeft()
+        flashCardView.removeGestureRecognizer(swipeGestureRecognizer)
+        flashCardView.removeGestureRecognizer(swipeToUpGestureRecognizer)
+    }
+    
+    @objc private func flashCardViewSwipedToUp() {
+        
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn) {
+            self.flashCardView.transform = CGAffineTransform(translationX: 0, y: -self.frame.height)
+            self.flashCardView.alpha = 0
+        }
+        animator.addCompletion { position in
+            if position == .end {
+                self.cardModel.isLearned = true
+                self.updateCardState?(self.cardModel)
+                self.animateSlideIn()
+            }
+        }
+        animator.startAnimation()
+        flashCardView.removeGestureRecognizer(swipeToUpGestureRecognizer)
         flashCardView.removeGestureRecognizer(swipeGestureRecognizer)
     }
     

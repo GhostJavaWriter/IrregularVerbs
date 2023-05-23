@@ -25,8 +25,12 @@ final class ViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var defaultDeck = [FlashCardModel(baseForm: "go", pastTense: "went", pastParticiple: "gone", group: 3)
-    ]
+    private var loader = Loader()
+    
+    private lazy var defaultDeck: [FlashCardModel] = {
+        let defaultDeck = loader.getFlashCards()
+        return defaultDeck
+    }()
     
     private var currentCardIndex = 0 {
         didSet {
@@ -41,14 +45,12 @@ final class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        loadDeck()
         defaultDeck.shuffle()
         
-//        currentCardIndex = Int.random(in: 0..<defaultDeck.count)
         let initialCard = defaultDeck[currentCardIndex]
         customView = CustomView(with: initialCard)
         customView?.showNextCard = { [weak self] in self?.showNextCard() }
-        
+        customView?.updateCardState = { [weak self] card in self?.updateCardState(for: card) }
         configureView()
     }
     
@@ -72,22 +74,14 @@ final class ViewController: UIViewController {
         ])
     }
     
-    private func loadDeck() {
-        if let url = Bundle.main.url(forResource: "verbs", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                self.defaultDeck = try decoder.decode([FlashCardModel].self, from: data)
-            } catch {
-                print("Error loading or parsing verbs.json: \(error)")
-            }
-        }
-    }
-    
     func showNextCard() {
         currentCardIndex = (currentCardIndex + 1) % defaultDeck.count
         let nextCard = defaultDeck[currentCardIndex]
         customView?.configureView(with: nextCard)
+    }
+    
+    func updateCardState(for flashCard: FlashCardModel) {
+        loader.updateFlashCard(flashCard)
     }
     
 }
