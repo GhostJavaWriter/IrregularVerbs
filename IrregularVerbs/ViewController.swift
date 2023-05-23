@@ -43,7 +43,10 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Irregular Verbs"
         view.backgroundColor = .white
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Learned", style: .plain, target: self, action: #selector(didTapRightBarButton))
         
         defaultDeck.shuffle()
         
@@ -72,6 +75,23 @@ final class ViewController: UIViewController {
             customView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             customView.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
         ])
+    }
+    
+    // MARK: - Actions
+
+    @objc private func didTapRightBarButton() {
+        
+        let cards = loader.getFlashCards()
+        let learnedCards = cards.filter { card in
+            if let isLearned = card.isLearned {
+                return true
+            }
+            return false
+        }
+        
+        let vc = LearnedCardsViewController()
+        vc.learnedFlashCards = learnedCards
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func showNextCard() {
