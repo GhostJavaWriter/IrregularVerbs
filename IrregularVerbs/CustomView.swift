@@ -144,10 +144,18 @@ final class CustomView: UIView {
         }
         animator.addCompletion { position in
             if position == .end {
-                self.flashCardView.transform = .identity
-                self.flashCardView.alpha = 1
-                self.showNextCard?()
+                self.animateSlideIn()
             }
+        }
+        animator.startAnimation()
+    }
+    
+    private func animateSlideIn() {
+        showNextCard?()
+        flashCardView.transform = CGAffineTransform(translationX: frame.size.width * 2, y: 0)
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn) {
+            self.flashCardView.transform = .identity
+            self.flashCardView.alpha = 1
         }
         animator.startAnimation()
     }
