@@ -20,7 +20,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
+        loadDeck()
         currentCardIndex = Int.random(in: 0..<defaultDeck.count)
         let initialCard = defaultDeck[currentCardIndex]
         customView = CustomView(with: initialCard)
@@ -38,8 +38,6 @@ final class ViewController: UIViewController {
             customView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             customView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
-        
-        loadDeck()
     }
     
     private func loadDeck() {
