@@ -38,17 +38,6 @@ final class CustomView: UIView {
         return swipeGesture
     }()
     
-//    private lazy var wrongButton: UIButton = {
-//        let button = UIButton()
-//        var config = UIButton.Configuration.plain()
-//        config.background.backgroundColor = .systemRed
-//        config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
-//        config.baseForegroundColor = .white
-//        button.setTitle("Wrong", for: .normal)
-//        button.configuration = config
-//        return button
-//    }()
-    
     // MARK: - Properties
     
     private var cardModel: FlashCardModel
