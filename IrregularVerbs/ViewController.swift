@@ -17,7 +17,7 @@ final class ViewController: UIViewController {
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         label.textColor = .darkGray
-        label.text = "\(currentCardIndex+1)/\(defaultDeck.count)"
+        label.text = "\(currentCardIndex+1)/\(learningCardsCount)"
         return label
     }()
     
@@ -32,9 +32,18 @@ final class ViewController: UIViewController {
         return defaultDeck
     }()
     
+    private var learnedCards = [FlashCardModel]()
+    private var learningCards = [FlashCardModel]()
+    
     private var currentCardIndex = 0 {
         didSet {
-            countLabel.text = "\(currentCardIndex+1)/\(defaultDeck.count)"
+            countLabel.text = "\(currentCardIndex+1)/\(learningCardsCount)"
+        }
+    }
+    
+    private lazy var learningCardsCount = learningCards.count {
+        didSet {
+            countLabel.text = "\(currentCardIndex+1)/\(learningCardsCount)"
         }
     }
     
@@ -48,9 +57,10 @@ final class ViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Learned", style: .plain, target: self, action: #selector(didTapRightBarButton))
         
-        defaultDeck.shuffle()
+        separateDeck()
+        learningCards.shuffle()
         
-        let initialCard = defaultDeck[currentCardIndex]
+        let initialCard = learningCards[currentCardIndex]
         customView = CustomView(with: initialCard)
         customView?.showNextCard = { [weak self] in self?.showNextCard() }
         customView?.updateCardState = { [weak self] card in self?.updateCardState(for: card) }
@@ -77,17 +87,20 @@ final class ViewController: UIViewController {
         ])
     }
     
+    private func separateDeck() {
+        
+        for card in defaultDeck {
+            if let _ = card.isLearned {
+                learnedCards.append(card)
+            } else {
+                learningCards.append(card)
+            }
+        }
+    }
+    
     // MARK: - Actions
 
     @objc private func didTapRightBarButton() {
-        
-        let cards = loader.getFlashCards()
-        let learnedCards = cards.filter { card in
-            if let isLearned = card.isLearned {
-                return true
-            }
-            return false
-        }
         
         let vc = LearnedCardsViewController()
         vc.learnedFlashCards = learnedCards
@@ -95,13 +108,15 @@ final class ViewController: UIViewController {
     }
     
     func showNextCard() {
-        currentCardIndex = (currentCardIndex + 1) % defaultDeck.count
-        let nextCard = defaultDeck[currentCardIndex]
+        currentCardIndex = (currentCardIndex + 1) % learningCardsCount
+        let nextCard = learningCards[currentCardIndex]
         customView?.configureView(with: nextCard)
     }
     
     func updateCardState(for flashCard: FlashCardModel) {
         loader.updateFlashCard(flashCard)
+        learnedCards.append(flashCard)
+        learningCardsCount -= 1
     }
     
 }
