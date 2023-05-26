@@ -50,7 +50,7 @@ final class CustomView: UIView {
     
     private var cardModel: FlashCardModel
     var showNextCard: (() -> Void)?
-    var updateCardState: ((FlashCardModel) -> Void)?
+    var learnCardAction: ((FlashCardModel) -> Void)?
     private var isFrontSideShown = true
     
     // MARK: - Init
@@ -146,7 +146,7 @@ final class CustomView: UIView {
         animator.addCompletion { position in
             if position == .end {
                 self.cardModel.isLearned = true
-                self.updateCardState?(self.cardModel)
+                self.learnCardAction?(self.cardModel)
                 self.animateSlideIn()
             }
         }

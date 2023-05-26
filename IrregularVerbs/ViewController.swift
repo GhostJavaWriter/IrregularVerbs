@@ -33,7 +33,11 @@ final class ViewController: UIViewController {
     }()
     
     private var learnedCards = [FlashCardModel]()
-    private var learningCards = [FlashCardModel]()
+    private var learningCards = [FlashCardModel]() {
+        didSet {
+            learningCardsCount = learningCards.count
+        }
+    }
     
     private var currentCardIndex = 0 {
         didSet {
@@ -65,7 +69,7 @@ final class ViewController: UIViewController {
         let initialCard = learningCards[currentCardIndex]
         customView = CustomView(with: initialCard)
         customView?.showNextCard = { [weak self] in self?.showNextCard() }
-        customView?.updateCardState = { [weak self] card in self?.updateCardState(for: card) }
+        customView?.learnCardAction = { [weak self] card in self?.learnCard(card) }
         configureView()
     }
     
@@ -111,8 +115,8 @@ final class ViewController: UIViewController {
         
         let vc = LearnedCardsViewController()
         vc.learnedFlashCards = learnedCards
-        vc.removeCardFromLearned = { [weak self] card in
-            self?.removeCardFromLearned(card: card)
+        vc.unlearnCardAction = { [weak self] card in
+            self?.unlearnCard(card)
         }
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -121,22 +125,33 @@ final class ViewController: UIViewController {
         showAddNewCardAlertController()
     }
     
+    private func addNewCard(_ card: FlashCardModel) {
+        learningCards.append(card)
+        flashCardManager.addNewFlashCard(card)
+    }
+    
+    private func learnCard(_ card: FlashCardModel) {
+        learningCards.removeAll { $0.baseForm == card.baseForm }
+        learnedCards.append(card)
+        
+        var updatedCard = card
+        updatedCard.isLearned = true
+        flashCardManager.updateFlashCard(updatedCard)
+    }
+    
+    private func unlearnCard(_ card: FlashCardModel) {
+        learnedCards.removeAll { $0.baseForm == card.baseForm }
+        learningCards.append(card)
+        
+        var updatedCard = card
+        updatedCard.isLearned = true
+        flashCardManager.updateFlashCard(card)
+    }
+    
     private func showNextCard() {
         currentCardIndex = (currentCardIndex + 1) % learningCardsCount
         let nextCard = learningCards[currentCardIndex]
         customView?.configureView(with: nextCard)
-    }
-    
-    private func updateCardState(for flashCard: FlashCardModel) {
-        flashCardManager.updateFlashCard(flashCard)
-        learnedCards.append(flashCard)
-        learningCardsCount -= 1
-    }
-    
-    private func removeCardFromLearned(card: FlashCardModel) {
-        var newStateCard = card
-        newStateCard.isLearned = false
-        flashCardManager.updateFlashCard(newStateCard)
     }
     
     private func showAddNewCardAlertController() {
@@ -181,7 +196,7 @@ final class ViewController: UIViewController {
                                               pastParticiple: pastParticiple ?? "",
                                               group: group)
             
-            self.flashCardManager.addNewFlashCard(newFlashCard)
+            self.addNewCard(newFlashCard)
         }
         
         addAction.isEnabled = false // Initially disable the Add action
@@ -195,7 +210,7 @@ final class ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc private func textFieldDidChange(_ textField: UITextField) {
         guard let alertController = self.presentedViewController as? UIAlertController,
               let addAction = alertController.actions.first,
               let textFields = alertController.textFields
