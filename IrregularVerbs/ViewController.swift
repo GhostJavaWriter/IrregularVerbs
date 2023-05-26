@@ -90,8 +90,13 @@ final class ViewController: UIViewController {
     private func separateDeck() {
         
         for card in defaultDeck {
-            if let _ = card.isLearned {
-                learnedCards.append(card)
+            
+            if let isLearned = card.isLearned {
+                if isLearned {
+                    learnedCards.append(card)
+                } else {
+                    learningCards.append(card)
+                }
             } else {
                 learningCards.append(card)
             }
@@ -104,19 +109,28 @@ final class ViewController: UIViewController {
         
         let vc = LearnedCardsViewController()
         vc.learnedFlashCards = learnedCards
+        vc.removeCardFromLearned = { [weak self] card in
+            self?.removeCardFromLearned(card: card)
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func showNextCard() {
+    private func showNextCard() {
         currentCardIndex = (currentCardIndex + 1) % learningCardsCount
         let nextCard = learningCards[currentCardIndex]
         customView?.configureView(with: nextCard)
     }
     
-    func updateCardState(for flashCard: FlashCardModel) {
+    private func updateCardState(for flashCard: FlashCardModel) {
         loader.updateFlashCard(flashCard)
         learnedCards.append(flashCard)
         learningCardsCount -= 1
+    }
+    
+    private func removeCardFromLearned(card: FlashCardModel) {
+        var newStateCard = card
+        newStateCard.isLearned = false
+        loader.updateFlashCard(newStateCard)
     }
     
 }

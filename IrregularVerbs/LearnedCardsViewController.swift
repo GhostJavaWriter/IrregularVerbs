@@ -9,7 +9,8 @@ import UIKit
 
 final class LearnedCardsViewController: UITableViewController {
     
-    var learnedFlashCards: [FlashCardModel]?
+    var learnedFlashCards = [FlashCardModel]()
+    var removeCardFromLearned: ((FlashCardModel) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,16 +19,26 @@ final class LearnedCardsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return learnedFlashCards?.count ?? 0
+        return learnedFlashCards.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        if let cards = learnedFlashCards {
-            content.text = cards[indexPath.row].baseForm
-        }
+        content.text = learnedFlashCards[indexPath.row].baseForm
         cell.contentConfiguration = content
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Remove the model from your data array
+            removeCardFromLearned?(learnedFlashCards[indexPath.row])
+            learnedFlashCards.remove(at: indexPath.row)
+            // Then remove the associated cell from the table view
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+
+    
 }
