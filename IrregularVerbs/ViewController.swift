@@ -25,10 +25,10 @@ final class ViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var loader = Loader()
+    private var flashCardManager = FlashCardManager()
     
     private lazy var defaultDeck: [FlashCardModel] = {
-        let defaultDeck = loader.getFlashCards()
+        let defaultDeck = flashCardManager.getFlashCards()
         return defaultDeck
     }()
     
@@ -56,6 +56,8 @@ final class ViewController: UIViewController {
         view.backgroundColor = .white
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Learned", style: .plain, target: self, action: #selector(didTapRightBarButton))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddBarButton))
         
         separateDeck()
         learningCards.shuffle()
@@ -115,6 +117,10 @@ final class ViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc private func didTapAddBarButton() {
+        showAddNewCardAlertController()
+    }
+    
     private func showNextCard() {
         currentCardIndex = (currentCardIndex + 1) % learningCardsCount
         let nextCard = learningCards[currentCardIndex]
@@ -122,7 +128,7 @@ final class ViewController: UIViewController {
     }
     
     private func updateCardState(for flashCard: FlashCardModel) {
-        loader.updateFlashCard(flashCard)
+        flashCardManager.updateFlashCard(flashCard)
         learnedCards.append(flashCard)
         learningCardsCount -= 1
     }
@@ -130,7 +136,76 @@ final class ViewController: UIViewController {
     private func removeCardFromLearned(card: FlashCardModel) {
         var newStateCard = card
         newStateCard.isLearned = false
-        loader.updateFlashCard(newStateCard)
+        flashCardManager.updateFlashCard(newStateCard)
+    }
+    
+    private func showAddNewCardAlertController() {
+        
+        let alertController = UIAlertController(title: "New Verb", message: "Enter details for the new verb.", preferredStyle: .alert)
+
+        // Add text fields
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Base Form"
+            textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        }
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Past Tense"
+            textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        }
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Past Participle"
+            textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        }
+
+        // Create an action for the button
+        let addAction = UIAlertAction(title: "Add", style: .default) { [weak alertController, self] _ in
+            guard let alertController = alertController,
+                  let baseFormTextField = alertController.textFields?[0],
+                  let pastTenseTextField = alertController.textFields?[1],
+                  let pastParticipleTextField = alertController.textFields?[2]
+            else { return }
+
+            let base = baseFormTextField.text
+            let pastTense = pastTenseTextField.text
+            let pastParticiple = pastParticipleTextField.text
+            var group = 3
+            if (base == pastTense) && (base == pastParticiple) {
+                group = 1
+            }
+            else if (pastTense == pastParticiple) {
+                group = 2
+            }
+            
+            let newFlashCard = FlashCardModel(baseForm: base ?? "",
+                                              pastTense: pastTense ?? "",
+                                              pastParticiple: pastParticiple ?? "",
+                                              group: group)
+            
+            self.flashCardManager.addNewFlashCard(newFlashCard)
+        }
+        
+        addAction.isEnabled = false // Initially disable the Add action
+        alertController.addAction(addAction)
+
+        // Add a cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let alertController = self.presentedViewController as? UIAlertController,
+              let addAction = alertController.actions.first,
+              let textFields = alertController.textFields
+        else { return }
+
+        // Enable the action when all text fields have text
+        addAction.isEnabled = textFields.allSatisfy { textField in
+            guard let text = textField.text else { return false }
+            return !text.isEmpty
+        }
     }
     
 }

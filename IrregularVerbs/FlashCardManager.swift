@@ -1,5 +1,5 @@
 //
-//  Loader.swift
+//  FlashCardManager.swift
 //  IrregularVerbs
 //
 //  Created by Bair Nadtsalov on 23.05.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Loader {
+class FlashCardManager {
     
     private var flashCards = [FlashCardModel]()
     
@@ -51,5 +51,10 @@ class Loader {
             flashCards[index] = flashCard
             saveFlashCards()
         }
+    }
+    
+    func addNewFlashCard(_ flashCard: FlashCardModel) {
+        flashCards.append(flashCard)
+        saveFlashCards()
     }
 }
