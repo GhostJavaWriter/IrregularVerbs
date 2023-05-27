@@ -68,6 +68,7 @@ final class ViewController: UIViewController {
         
         let initialCard = learningCards[currentCardIndex]
         customView = CustomView(with: initialCard)
+        customView?.fontName = "NotoSerifDisplay-Regular"
         customView?.showNextCard = { [weak self] in self?.showNextCard() }
         customView?.learnCardAction = { [weak self] card in self?.learnCard(card) }
         configureView()

@@ -18,6 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootVC = ViewController()
         let navController = UINavigationController(rootViewController: rootVC)
         window?.rootViewController = navController
+        
+        let families = UIFont.familyNames
+        families.sorted().forEach {
+          print("\($0)")
+          let names = UIFont.fontNames(forFamilyName: $0)
+          print(names)
+        }
+        
         window?.makeKeyAndVisible()
         
         return true

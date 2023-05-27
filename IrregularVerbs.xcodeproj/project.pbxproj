@@ -14,6 +14,10 @@
 		DE2395F32A1D3CA80056ED7A /* FlashCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2395F22A1D3CA80056ED7A /* FlashCardManager.swift */; };
 		DE2395F52A1D56D50056ED7A /* LearnedCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2395F42A1D56D50056ED7A /* LearnedCardsViewController.swift */; };
 		DE2395F72A217A120056ED7A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2395F62A217A120056ED7A /* Colors.swift */; };
+		DE2395F92A2182350056ED7A /* NotoSerifDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE2395F82A2182350056ED7A /* NotoSerifDisplay-Regular.ttf */; };
+		DE2395FB2A2182400056ED7A /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = DE2395FA2A2182400056ED7A /* OFL.txt */; };
+		DE2395FE2A2184D60056ED7A /* NotoSerifDisplay-Regular.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE2395FD2A2184D60056ED7A /* NotoSerifDisplay-Regular.plist */; };
+		DE2396002A2185C20056ED7A /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2395FF2A2185C20056ED7A /* ScaledFont.swift */; };
 		DEC888042A17E4D700256D97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC888032A17E4D700256D97 /* AppDelegate.swift */; };
 		DEC888082A17E4D700256D97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC888072A17E4D700256D97 /* ViewController.swift */; };
 		DEC8880D2A17E4D900256D97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC8880C2A17E4D900256D97 /* Assets.xcassets */; };
@@ -28,6 +32,10 @@
 		DE2395F22A1D3CA80056ED7A /* FlashCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardManager.swift; sourceTree = "<group>"; };
 		DE2395F42A1D56D50056ED7A /* LearnedCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedCardsViewController.swift; sourceTree = "<group>"; };
 		DE2395F62A217A120056ED7A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		DE2395F82A2182350056ED7A /* NotoSerifDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		DE2395FA2A2182400056ED7A /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		DE2395FD2A2184D60056ED7A /* NotoSerifDisplay-Regular.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NotoSerifDisplay-Regular.plist"; sourceTree = "<group>"; };
+		DE2395FF2A2185C20056ED7A /* ScaledFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		DEC888002A17E4D700256D97 /* IrregularVerbs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IrregularVerbs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC888032A17E4D700256D97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEC888072A17E4D700256D97 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE2395FC2A21824B0056ED7A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DE2395F82A2182350056ED7A /* NotoSerifDisplay-Regular.ttf */,
+				DE2395FA2A2182400056ED7A /* OFL.txt */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		DEC887F72A17E4D700256D97 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				DEC888172A17E80C00256D97 /* Base */,
+				DE2395FC2A21824B0056ED7A /* Fonts */,
 				DEC888032A17E4D700256D97 /* AppDelegate.swift */,
 				DEC888072A17E4D700256D97 /* ViewController.swift */,
 				DE2395F42A1D56D50056ED7A /* LearnedCardsViewController.swift */,
@@ -76,6 +94,8 @@
 				DE2395F22A1D3CA80056ED7A /* FlashCardManager.swift */,
 				DE2395F62A217A120056ED7A /* Colors.swift */,
 				DE2395F02A1A95500056ED7A /* verbs.json */,
+				DE2395FD2A2184D60056ED7A /* NotoSerifDisplay-Regular.plist */,
+				DE2395FF2A2185C20056ED7A /* ScaledFont.swift */,
 			);
 			path = IrregularVerbs;
 			sourceTree = "<group>";
@@ -148,6 +168,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2395FB2A2182400056ED7A /* OFL.txt in Resources */,
+				DE2395FE2A2184D60056ED7A /* NotoSerifDisplay-Regular.plist in Resources */,
+				DE2395F92A2182350056ED7A /* NotoSerifDisplay-Regular.ttf in Resources */,
 				DEC888102A17E4D900256D97 /* LaunchScreen.storyboard in Resources */,
 				DE2395E92A17EE230056ED7A /* .gitignore in Resources */,
 				DEC8880D2A17E4D900256D97 /* Assets.xcassets in Resources */,
@@ -168,6 +191,7 @@
 				DE2395F72A217A120056ED7A /* Colors.swift in Sources */,
 				DEC888082A17E4D700256D97 /* ViewController.swift in Sources */,
 				DEC888042A17E4D700256D97 /* AppDelegate.swift in Sources */,
+				DE2396002A2185C20056ED7A /* ScaledFont.swift in Sources */,
 				DE2395F32A1D3CA80056ED7A /* FlashCardManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

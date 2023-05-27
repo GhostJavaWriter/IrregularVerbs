@@ -52,6 +52,17 @@ final class CustomView: UIView {
     var learnCardAction: ((FlashCardModel) -> Void)?
     private var isFrontSideShown = true
     
+    var fontName = "NotoSerifDisplay-Regular" {
+        didSet {
+            scaledFont = ScaledFont(fontName: fontName)
+            configureFont()
+        }
+    }
+    
+    private lazy var scaledFont: ScaledFont = {
+        return ScaledFont(fontName: fontName)
+    }()
+    
     // MARK: - Init
     
     init(with model: FlashCardModel) {
@@ -80,6 +91,10 @@ final class CustomView: UIView {
     }
     
     // MARK: - Private methods
+    
+    private func configureFont() {
+        wordLabel.font = scaledFont.font(forTextStyle: .largeTitle)
+    }
     
     private func setupView() {
         
