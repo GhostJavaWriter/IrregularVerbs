@@ -13,6 +13,7 @@
 		DE2395F12A1A95500056ED7A /* verbs.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2395F02A1A95500056ED7A /* verbs.json */; };
 		DE2395F32A1D3CA80056ED7A /* FlashCardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2395F22A1D3CA80056ED7A /* FlashCardManager.swift */; };
 		DE2395F52A1D56D50056ED7A /* LearnedCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2395F42A1D56D50056ED7A /* LearnedCardsViewController.swift */; };
+		DE2395F72A217A120056ED7A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2395F62A217A120056ED7A /* Colors.swift */; };
 		DEC888042A17E4D700256D97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC888032A17E4D700256D97 /* AppDelegate.swift */; };
 		DEC888082A17E4D700256D97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC888072A17E4D700256D97 /* ViewController.swift */; };
 		DEC8880D2A17E4D900256D97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC8880C2A17E4D900256D97 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		DE2395F02A1A95500056ED7A /* verbs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = verbs.json; sourceTree = "<group>"; };
 		DE2395F22A1D3CA80056ED7A /* FlashCardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardManager.swift; sourceTree = "<group>"; };
 		DE2395F42A1D56D50056ED7A /* LearnedCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedCardsViewController.swift; sourceTree = "<group>"; };
+		DE2395F62A217A120056ED7A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		DEC888002A17E4D700256D97 /* IrregularVerbs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IrregularVerbs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC888032A17E4D700256D97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEC888072A17E4D700256D97 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				DE2395EA2A17F58F0056ED7A /* CustomView.swift */,
 				DE2395EC2A17F6AA0056ED7A /* FlashCardModel.swift */,
 				DE2395F22A1D3CA80056ED7A /* FlashCardManager.swift */,
+				DE2395F62A217A120056ED7A /* Colors.swift */,
 				DE2395F02A1A95500056ED7A /* verbs.json */,
 			);
 			path = IrregularVerbs;
@@ -162,6 +165,7 @@
 				DE2395F52A1D56D50056ED7A /* LearnedCardsViewController.swift in Sources */,
 				DE2395ED2A17F6AA0056ED7A /* FlashCardModel.swift in Sources */,
 				DE2395EB2A17F58F0056ED7A /* CustomView.swift in Sources */,
+				DE2395F72A217A120056ED7A /* Colors.swift in Sources */,
 				DEC888082A17E4D700256D97 /* ViewController.swift in Sources */,
 				DEC888042A17E4D700256D97 /* AppDelegate.swift in Sources */,
 				DE2395F32A1D3CA80056ED7A /* FlashCardManager.swift in Sources */,
@@ -306,15 +310,17 @@
 				DEVELOPMENT_TEAM = 6X73SB6LVU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IrregularVerbs/Base/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "English Irregular Verbs";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nadts.IrregularVerbs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -322,7 +328,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -336,15 +342,17 @@
 				DEVELOPMENT_TEAM = 6X73SB6LVU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IrregularVerbs/Base/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "English Irregular Verbs";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nadts.IrregularVerbs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -352,7 +360,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

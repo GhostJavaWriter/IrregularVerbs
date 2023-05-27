@@ -14,6 +14,7 @@ final class LearnedCardsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = Colors.mainBackgound
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
@@ -27,6 +28,7 @@ final class LearnedCardsViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
         content.text = learnedFlashCards[indexPath.row].baseForm
         cell.contentConfiguration = content
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     

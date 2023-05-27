@@ -25,7 +25,6 @@ final class CustomView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 20
-        view.backgroundColor = .systemYellow
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(flashCardTapped))
         view.addGestureRecognizer(tapGestureRecognizer)
@@ -73,9 +72,9 @@ final class CustomView: UIView {
         wordLabel.text = model.baseForm
         isFrontSideShown = true
         switch cardModel.group {
-        case 1: flashCardView.backgroundColor = .systemGreen
-        case 2: flashCardView.backgroundColor = .systemYellow
-        case 3: flashCardView.backgroundColor = .systemRed
+        case 1: flashCardView.backgroundColor = Colors.groupOne
+        case 2: flashCardView.backgroundColor = Colors.groupTwo
+        case 3: flashCardView.backgroundColor = Colors.groupThree
         default: flashCardView.backgroundColor = .white
         }
     }

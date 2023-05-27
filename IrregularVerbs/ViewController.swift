@@ -74,6 +74,9 @@ final class ViewController: UIViewController {
     }
     
     private func configureView() {
+        
+        view.backgroundColor = Colors.mainBackgound
+        
         guard let customView = customView else { return }
         
         view.addSubview(countLabel)
