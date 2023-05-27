@@ -17,15 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootVC = ViewController()
         let navController = UINavigationController(rootViewController: rootVC)
+        UINavigationBar.appearance().tintColor = Colors.groupOne
+
+//        let appearance = UINavigationBarAppearance()
+//        appearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "NotoSerifDisplay-Regular", size: 20) ?? UIFont.systemFont(ofSize: 20)]
+//        UINavigationBar.appearance().standardAppearance = appearance
+//
+//        let attributes = [NSAttributedString.Key.font: UIFont(name: "NotoSerifDisplay-Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)]
+//        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+        
         window?.rootViewController = navController
-        
-        let families = UIFont.familyNames
-        families.sorted().forEach {
-          print("\($0)")
-          let names = UIFont.fontNames(forFamilyName: $0)
-          print(names)
-        }
-        
         window?.makeKeyAndVisible()
         
         return true

@@ -27,6 +27,8 @@ final class LearnedCardsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         content.text = learnedFlashCards[indexPath.row].baseForm
+        content.textProperties.font = UIFont(name: "NotoSerifDisplay-Regular", size: 20) ?? UIFont.systemFont(ofSize: 20)
+        content.textProperties.color = Colors.groupOne ?? .black
         cell.contentConfiguration = content
         cell.backgroundColor = UIColor.clear
         return cell

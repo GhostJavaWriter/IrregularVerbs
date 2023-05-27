@@ -15,8 +15,8 @@ final class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
-        label.textColor = .darkGray
+        label.font = scaledFont.font(forTextStyle: .title1)
+        label.textColor = Colors.groupOne
         label.text = "\(currentCardIndex+1)/\(learningCardsCount)"
         return label
     }()
@@ -51,15 +51,18 @@ final class ViewController: UIViewController {
         }
     }
     
+    private lazy var scaledFont: ScaledFont = {
+        return ScaledFont(fontName: "NotoSerifDisplay-Regular")
+    }()
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Irregular Verbs"
-        view.backgroundColor = .white
+//        title = "Irregular Verbs"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Learned", style: .plain, target: self, action: #selector(didTapRightBarButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "...", style: .plain, target: self, action: #selector(didTapRightBarButton))
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddBarButton))
         

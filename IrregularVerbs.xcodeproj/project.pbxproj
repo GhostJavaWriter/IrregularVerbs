@@ -93,9 +93,9 @@
 				DE2395EC2A17F6AA0056ED7A /* FlashCardModel.swift */,
 				DE2395F22A1D3CA80056ED7A /* FlashCardManager.swift */,
 				DE2395F62A217A120056ED7A /* Colors.swift */,
+				DE2395FF2A2185C20056ED7A /* ScaledFont.swift */,
 				DE2395F02A1A95500056ED7A /* verbs.json */,
 				DE2395FD2A2184D60056ED7A /* NotoSerifDisplay-Regular.plist */,
-				DE2395FF2A2185C20056ED7A /* ScaledFont.swift */,
 			);
 			path = IrregularVerbs;
 			sourceTree = "<group>";
