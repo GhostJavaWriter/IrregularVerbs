@@ -1,6 +1,6 @@
-# My App
+# English irregular verbs
 
-This is a brief description of my app.
+This simple app designed as simple as possible. It can help to learn English irregular verbs.
 
 ## Screenshots
 
