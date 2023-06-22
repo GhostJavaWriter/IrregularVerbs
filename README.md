@@ -1,6 +1,7 @@
 # English irregular verbs
 
 This simple app designed as simple as possible. It can help to learn English irregular verbs.
+AppStore link: https://apps.apple.com/us/app/english-verbs-easy-to-learn/id6449653246
 
 ## Screenshots
 
