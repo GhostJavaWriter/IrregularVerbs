@@ -18,6 +18,6 @@ jobs:
       with:
         java-version: 1.8
     - name: Build
-      run: xcodebuild clean build -workspace IrregularVerbs/IrregularVerbs.xcworkspace -scheme IrregularVerbs/IrregularVerbs
+      run: xcodebuild clean build -workspace project.xcworkspace -scheme project
     - name: Run tests
-      run: xcodebuild test -workspace IrregularVerbs/IrregularVerbs.xcworkspace -scheme IrregularVerbs/IrregularVerbs
+      run: xcodebuild test -workspace project.xcworkspace -scheme project
